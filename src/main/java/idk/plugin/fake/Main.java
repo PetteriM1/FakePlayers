@@ -20,7 +20,7 @@ public class Main extends PluginBase implements Listener {
     
     Map<String,UUID> fakers = new HashMap<>();
     Map<UUID,String> fakers2 = new HashMap<>();
-    Skin skin = new Skin(new byte[Skin.SINGLE_SKIN_SIZE], "Standard_Custom");
+    Skin skin = new Skin();
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
     SecureRandom random = new SecureRandom();
 
@@ -65,6 +65,7 @@ public class Main extends PluginBase implements Listener {
     @EventHandler
     public void setQuery(QueryRegenerateEvent e) {
         e.setPlayerCount(e.getPlayerCount() + fakers.size());
+        //TODO: add fake plyer names to query
     }
     
     @EventHandler
