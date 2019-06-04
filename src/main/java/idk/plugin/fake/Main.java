@@ -100,7 +100,7 @@ public class Main extends PluginBase implements Listener {
             count = lastRandomCount + (random.nextInt(maxChangeRandomCount - minChangeRandomCount + 1) + minChangeRandomCount);
             if (count > maxRandomCount) count = maxRandomCount;
             if (count < minRandomCount) count = minRandomCount;
-            e.setPlayerCount(count);
+            e.setPlayerCount(e.getPlayerCount() + fakers.size() + count);
         } else {
             e.setPlayerCount(e.getPlayerCount() + fakers.size());
             //TODO: Add fake plyer names to query
