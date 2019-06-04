@@ -9,6 +9,10 @@ commands:
     description: Add or remove fake player
     usage: "/fake <add|remove> <name>"
     permission: fake.use
+  fakerandomquery:
+    description: Enable radom fake player count in query only
+    usage: "/fakerandomquery <on <base, min, max, rand min, rand max>|off>"
+    permission: fake.use
 permissions:
   fake.use:
     description: "Allow usage of /fake"
