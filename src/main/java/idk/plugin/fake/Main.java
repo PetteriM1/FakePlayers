@@ -20,10 +20,10 @@ public class Main extends PluginBase implements Listener {
     
     private Map<String,UUID> fakers = new HashMap<>();
     private Map<UUID,String> fakers2 = new HashMap<>();
-    private Skin skin = new Skin();
-    private String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    private static final Skin skin = new Skin();
+    private static final String alphabet = "abcdefghijklmnopqrstuvwxyz";
     private SecureRandom random = new SecureRandom();
-    private boolean randomCount = false;
+    private boolean randomCount;
     private int lastRandomCount;
     private int minRandomCount;
     private int maxRandomCount;
@@ -56,7 +56,7 @@ public class Main extends PluginBase implements Listener {
                         fakers2.remove(uuid, args[1]);
                         Server.getInstance().removePlayerListData(fakers.get(args[1]));
                         sender.sendMessage("\u00A7aFake player removed");
-                    } catch (NullPointerException e) {
+                    } catch (Exception e) {
                         sender.sendMessage("\u00A7cFailed to remove player " + args[1]);
                     }
                     return true;
@@ -96,8 +96,7 @@ public class Main extends PluginBase implements Listener {
     @EventHandler
     public void setQuery(QueryRegenerateEvent e) {
         if (randomCount) {
-            int count;
-            count = lastRandomCount + (random.nextInt(maxChangeRandomCount - minChangeRandomCount + 1) + minChangeRandomCount);
+            int count = lastRandomCount + (random.nextInt(maxChangeRandomCount - minChangeRandomCount + 1) + minChangeRandomCount);
             if (count > maxRandomCount) count = maxRandomCount;
             if (count < minRandomCount) count = minRandomCount;
             e.setPlayerCount(e.getPlayerCount() + fakers.size() + count);
