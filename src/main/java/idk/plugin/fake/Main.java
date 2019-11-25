@@ -20,7 +20,7 @@ public class Main extends PluginBase implements Listener {
     
     private Map<String,UUID> fakers = new HashMap<>();
     private Map<UUID,String> fakers2 = new HashMap<>();
-    private static final Skin skin = new Skin();
+    private static Skin skin;
     private static final String alphabet = "abcdefghijklmnopqrstuvwxyz";
     private SecureRandom random = new SecureRandom();
     private boolean randomCount;
@@ -31,6 +31,8 @@ public class Main extends PluginBase implements Listener {
     private int maxChangeRandomCount;
 
     public void onEnable() {
+        skin = new Skin();
+        skin.setSkinId("FAKE");
         getServer().getPluginManager().registerEvents(this, this);
     }
 
